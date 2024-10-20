@@ -1,0 +1,5 @@
+Stop-AzVM -ResourceGroupName "rg001" -Name "winvm01" -Force
+$vm = Get-AzVM -ResourceGroupName "rg001" -VMName "winvm01"
+$vm.HardwareProfile.VmSize = "Standard_B2s"
+Update-AzVM -VM $vm -ResourceGroupName "rg001"
+Start-AzVM -ResourceGroupName "rg001" -Name $vm.name
