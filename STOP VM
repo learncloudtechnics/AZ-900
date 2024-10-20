@@ -1,0 +1,4 @@
+$azResourceGroup = "rg001"
+$azVMName = "winvm01"
+$vm = Get-AzVM -ResourceGroupName $azResourceGroup -Name $azVMName
+Stop-AzVM -ResourceGroupName $azResourceGroup -Name $azVMName
