@@ -1,0 +1,17 @@
+#First, we need to login to the Azure account:
+#Connect-AzAccount
+
+#If necessary, select the right subscription:
+#Select-AzSubscription -SubscriptionId "********-****-****-****-***********"
+
+#Create a resource group for the VNet:
+#New-AzResourceGroup -Name PacktVNetServicesGroup -Location EastUS
+
+#Create the VNet:
+$virtualNetwork = New-AzVirtualNetwork -ResourceGroupName rg001 -Location EastUS -Name vnet02 -AddressPrefix 10.19.0.0/16
+
+#Create the Subnet:
+$subnetConfig = Add-AzVirtualNetworkSubnetConfig -Name subnet01 -AddressPrefix 10.19.0.0/24 -VirtualNetwork vnet02
+
+#Accociate the subnet to the virtual network:
+$virtualNetwork | Set-AzVirtualNetwork
